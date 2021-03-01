@@ -1,0 +1,108 @@
+.main {
+	position: relative;
+	height: 100vh;
+	background: url('/background.png');
+	background-size: cover;
+	background-position: 100% 0%;
+	.gameZone {
+		border: 2px solid red;
+		height: calc(100vh + 300px);
+		top: -300px;
+		width: 1000px;
+		margin: 0 auto;
+		position: relative;
+		.star {
+			position: absolute;
+			height: 300px;
+			width: 300px;
+			background: url('/star.png');
+			background-size: cover;
+			p {
+				position: relative;
+				margin: 0;
+				top: 75px;
+				text-align: center;
+				font-size: 120px;
+				font-weight: 700;
+			}
+		}
+	}
+	.gamePanel {
+		z-index: 10;
+		position: absolute;
+		right: 0;
+		width: 220px;
+		height: 150px;
+		border: 2px solid #26cbf0;
+		background-color: rgba(159, 214, 227, 0.8);
+		p {
+			text-align: center;
+			font-size: 18px;
+			font-weight: 600;
+			color: #0c1287;
+			margin-bottom: 5px;
+		}
+		button {
+			padding: 4px 8px;
+			margin: 15px 0 15px 15px;
+		}
+		.restartButton {
+			float: right;
+			margin: 15px 15px 15px 0;
+		}
+	}
+}
+
+@media screen and (max-width: 1460px) {
+	.main {
+		.gameZone {
+			height: calc(100vh + 225px);
+			top: -225px;
+			width: 750px; 
+			.star {
+				height: 225px; 
+				width: 225px; 
+				p {
+					top: 50px; 
+					font-size: 100px; 
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.main {
+		.gameZone {
+			height: calc(100vh + 180px);
+			top: -180px;
+			width: 600px; 
+			.star {
+				height: 180px; 
+				width: 180px; 
+				p {
+					top: 40px; 
+					font-size: 80px; 
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 670px) {
+	.main {
+		.gameZone {
+			height: calc(100vh + 96px);
+			top: -96px;
+			width: 320px; 
+			.star {
+				height: 96px; 
+				width: 96px; 
+				p {
+					top: 14px; 
+					font-size: 50px; 
+				}
+			}
+		}
+	}
+}
