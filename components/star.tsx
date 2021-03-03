@@ -18,6 +18,7 @@ export default function Star(props): JSX.Element {
 
   useEffect(():void => {
     if(timeToFall <= 0) {
+      setLeftIndent(indent => indent)
       props.deleteStar(props.index, props.value)
     }
   }, [timeToFall])

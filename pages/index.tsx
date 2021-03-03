@@ -1,13 +1,12 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import React, { useState, useEffect } from 'react'
-import Star from '../components/star.tsx'
-import GamePanel from '../components/gamePanel.tsx'
+import Star from '../components/star'
+import GamePanel from '../components/gamePanel'
 
 export default function Home(): JSX.Element {
 
   const [status, setStatus] = useState<boolean>(true)
-  const [regulator, setRegulator] = useState<boolean>(true)
   const [stars, setStars] = useState<(number|null)[]>([])
   const [sum, setSum] = useState<number>(0)
 
@@ -35,19 +34,16 @@ export default function Home(): JSX.Element {
     if(status === true) {
       if(stars.filter(star => star !== null).length < 3) {
         setTimeout((): void => {
-          let arrayCopy: (number|null)[] = stars
   
           let randomNum: number = Math.ceil(Math.random()*10)
           if(randomNum > 5) {
             randomNum -= 11
           }
           if(stars.indexOf(null) !== -1) {
-            arrayCopy.splice(stars.indexOf(null), 1, randomNum)
+            setStars(array => array.splice(stars.indexOf(null), 1, randomNum))
           } else {
-            arrayCopy[stars.length] = randomNum
+            setStars(array => [...array, randomNum])
           }
-          setStars(arrayCopy)
-          setRegulator((prevValue) => !prevValue)
 
         },  Math.random() * 1500)
       }
