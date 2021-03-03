@@ -32,29 +32,39 @@ export default function Home(): JSX.Element {
 
   const createStar = ():void => {
     if(status === true) {
-      if(stars.filter(star => star !== null).length < 3) {
-        setTimeout((): void => {
+      setTimeout((): void => {
   
-          let randomNum: number = Math.ceil(Math.random()*10)
-          if(randomNum > 5) {
-            randomNum -= 11
-          }
-          if(stars.indexOf(null) !== -1) {
-            setStars(array => array.splice(stars.indexOf(null), 1, randomNum))
-          } else {
-            setStars(array => [...array, randomNum])
-          }
+        let randomNum: number = Math.ceil(Math.random()*10)
+        if(randomNum > 5) {
+          randomNum -= 11
+        }
 
-        },  Math.random() * 1500)
-      }
+        setStars(array => {
+          if(array.filter(star => star !== null).length < 3) {
+            if(array.indexOf(null) !== -1) {
+              array.splice(array.indexOf(null), 1, randomNum)
+              console.log('creating', array, 1)
+              return array
+            } else {
+              console.log('creating', [...array, randomNum], 2)
+              return [...array, randomNum]
+            }
+          } else {
+            return array
+          }
+        })
+
+      },  Math.random() * 1500)
     }
   } 
 
   const deleteStar = (id, value):void => {
-    let arrayCopy: (number|null)[] = stars
-    arrayCopy.splice(id, 1, null)
     setSum((sum) => sum + value)
-    setStars(arrayCopy)
+    setStars(array => {
+      array.splice(id, 1, null)
+      console.log('delete', array)
+      return array
+    })
   }
 
   const starDisplay = ():(number|null)[] => stars.map((item, index):any => {
