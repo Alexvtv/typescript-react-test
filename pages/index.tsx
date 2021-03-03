@@ -43,10 +43,8 @@ export default function Home(): JSX.Element {
           if(array.filter(star => star !== null).length < 3) {
             if(array.indexOf(null) !== -1) {
               array.splice(array.indexOf(null), 1, randomNum)
-              console.log('creating', array, 1)
               return array
             } else {
-              console.log('creating', [...array, randomNum], 2)
               return [...array, randomNum]
             }
           } else {
@@ -62,7 +60,6 @@ export default function Home(): JSX.Element {
     setSum((sum) => sum + value)
     setStars(array => {
       array.splice(id, 1, null)
-      console.log('delete', array)
       return array
     })
   }
